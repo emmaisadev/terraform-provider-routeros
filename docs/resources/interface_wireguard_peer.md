@@ -31,6 +31,7 @@ resource "routeros_interface_wireguard_peer" "wg_peer" {
 ### Optional
 
 - `client_address` (String) When imported using a qr code for a client (for example, a phone), then this address for the wg interface is set on that device.
+- `client_allowed_address` (List of String) List of CIDRs used on the client side to set up routes. Use 0.0.0.0/0 or ::/0 to route all traffic through the WireGuard tunnel, or specify individual CIDRs to route only specific traffic. If omitted, the QR code will configure the tunnel as the default route when importing via QR code.
 - `client_dns` (String) Specify when using WireGuard Server as a VPN gateway for peer traffic.
 - `client_endpoint` (String) The IP address and port number of the WireGuard Server.
 - `client_keepalive` (String) Same as persistent-keepalive but from peer side.
