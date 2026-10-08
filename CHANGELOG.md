@@ -28,6 +28,36 @@
 * **tool_sniffer:** routeros_tool_sniffer filter_ip_address field must support CIDR ([9d57561](https://github.com/emmaisadev/terraform-provider-routeros/commit/9d57561c0cbfddeb7196661636478592f4329bcc)), closes [#938](https://github.com/emmaisadev/terraform-provider-routeros/issues/938)
 * **traffic_flow:** Add the missing `enable` attribute ([e97e918](https://github.com/emmaisadev/terraform-provider-routeros/commit/e97e9187fbdab147a8602313f6b39f8146af7993)), closes [#890](https://github.com/emmaisadev/terraform-provider-routeros/issues/890)
 
+## [1.100.0](https://github.com/emmaisadev/terraform-provider-routeros/compare/v1.99.1...v1.100.0) (2026-10-08)
+
+### Features
+
+* Add routeros_routing_id resource with schema and example usage ([d8d90b5](https://github.com/emmaisadev/terraform-provider-routeros/commit/d8d90b53c3cbfb5c339d0d1431f3fb1befb81d5d))
+* add stable RouterOS schema fields ([4a8fa3a](https://github.com/emmaisadev/terraform-provider-routeros/commit/4a8fa3a43eda2654290d74c310b6d1e0b6889881))
+* Implement resource_interface_l2tp_server ([decbbd5](https://github.com/emmaisadev/terraform-provider-routeros/commit/decbbd5f450320b6357d9dd4c59cff4893370184)), closes [#952](https://github.com/emmaisadev/terraform-provider-routeros/issues/952)
+* migrate MLAG management to bridge attributes ([ebd5965](https://github.com/emmaisadev/terraform-provider-routeros/commit/ebd5965ae9ca508b608c42c1dacfb2bb32af0efc))
+* **routeros:** add client_allowed_address field to wireguard peer ([c9c2cf3](https://github.com/emmaisadev/terraform-provider-routeros/commit/c9c2cf346eaf51b409328535dbb64e221623ad3c))
+
+### Bug Fixes
+
+* Add attributes to ipv6_address and ip_ssh_server [7.21] ([5698c77](https://github.com/emmaisadev/terraform-provider-routeros/commit/5698c77e97555ebe3f29cbcec304f178738d2e35)), closes [#935](https://github.com/emmaisadev/terraform-provider-routeros/issues/935)
+* always-allow-password-login rename [7.21] ([bc06c3f](https://github.com/emmaisadev/terraform-provider-routeros/commit/bc06c3f227fc13795c2c480458222044ef7f9bfd))
+* **bridge:** keep volatile read-only fields out of refresh-only drift ([011b75c](https://github.com/emmaisadev/terraform-provider-routeros/commit/011b75c4000100408733e219ed3f9055970704a9)), closes [#1006](https://github.com/emmaisadev/terraform-provider-routeros/issues/1006)
+* **container:** read running state from the running field, not status ([25a0e02](https://github.com/emmaisadev/terraform-provider-routeros/commit/25a0e0274c56f15d364a02e5c62da2b0e301c255))
+* Fields not found in the schema (7.24.1) ([fa03e6c](https://github.com/emmaisadev/terraform-provider-routeros/commit/fa03e6c1df1c60be40b9a460174112d364f55937))
+* Fix continual +/32 diffs, where ROS reads back without ([aed2eb4](https://github.com/emmaisadev/terraform-provider-routeros/commit/aed2eb4a917284118728ffe74cd690eea260da5c)), closes [#916](https://github.com/emmaisadev/terraform-provider-routeros/issues/916)
+* **helpers:** accept lowercase kilo suffix in bit/byte value parsing ([47ccfe6](https://github.com/emmaisadev/terraform-provider-routeros/commit/47ccfe6d1dd00cad98a1d0dfd41cb2443a0a7c5c)), closes [#1012](https://github.com/emmaisadev/terraform-provider-routeros/issues/1012)
+* **helpers:** do not panic in diff-suppressors on unparseable values ([f5c736e](https://github.com/emmaisadev/terraform-provider-routeros/commit/f5c736e928575962e9f59801926fc947b069c3c4)), closes [#1011](https://github.com/emmaisadev/terraform-provider-routeros/issues/1011)
+* ignore noisy logging action fields ([7824d6f](https://github.com/emmaisadev/terraform-provider-routeros/commit/7824d6f815e1b358ca9ffc1fed9af8f419c4a456))
+* **interface_ethernet_switch_port:** Add the hw offloading attribute ([2892320](https://github.com/emmaisadev/terraform-provider-routeros/commit/2892320bf1748319b1b810cfc928f488b353d836)), closes [#895](https://github.com/emmaisadev/terraform-provider-routeros/issues/895)
+* **queue_tree:** Fix the resource "routeros_queue_tree" crashes when refreshing state ([15869a0](https://github.com/emmaisadev/terraform-provider-routeros/commit/15869a040a5d4327beebedd4045b05bb1164bc36)), closes [#925](https://github.com/emmaisadev/terraform-provider-routeros/issues/925)
+* **routing_bgp_connection:** stop sending removed add-path-out parameter ([80e1f2b](https://github.com/emmaisadev/terraform-provider-routeros/commit/80e1f2b47dcf0d15d53db29ed53729001ced9538))
+* **routing_bgp_connections:** Unable to unset bgp connection keepalive time ([d2d3a82](https://github.com/emmaisadev/terraform-provider-routeros/commit/d2d3a8260c9e4070bde01fa76c73cec67a9c8cce)), closes [#904](https://github.com/emmaisadev/terraform-provider-routeros/issues/904)
+* **routing_bgp_template:** stop sending removed add-path-out parameter ([02137e1](https://github.com/emmaisadev/terraform-provider-routeros/commit/02137e15f4b62cc7e2d41ad8ea3879d078b13606))
+* **system_routerboard:** Field 'disable_pci' not found in the schema (7.20.6) ([45a8f99](https://github.com/emmaisadev/terraform-provider-routeros/commit/45a8f992756356d45206682d442a4d5fc8d18d06)), closes [#902](https://github.com/emmaisadev/terraform-provider-routeros/issues/902)
+* **tool_sniffer:** routeros_tool_sniffer filter_ip_address field must support CIDR ([9d57561](https://github.com/emmaisadev/terraform-provider-routeros/commit/9d57561c0cbfddeb7196661636478592f4329bcc)), closes [#938](https://github.com/emmaisadev/terraform-provider-routeros/issues/938)
+* **traffic_flow:** Add the missing `enable` attribute ([e97e918](https://github.com/emmaisadev/terraform-provider-routeros/commit/e97e9187fbdab147a8602313f6b39f8146af7993)), closes [#890](https://github.com/emmaisadev/terraform-provider-routeros/issues/890)
+
 ## [1.100.0](https://github.com/terraform-routeros/terraform-provider-routeros/compare/v1.99.1...v1.100.0) (2026-03-13)
 
 ### Features
