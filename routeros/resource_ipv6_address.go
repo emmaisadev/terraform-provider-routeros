@@ -30,7 +30,7 @@ func ResourceIPv6Address() *schema.Resource {
 	resSchema := map[string]*schema.Schema{
 		MetaResourcePath: PropResourcePath("/ipv6/address"),
 		MetaId:           PropId(Id),
-		MetaSkipFields:   PropSkipFields("preferred", "valid", "vrf"),
+		MetaSkipFields:   PropSkipFields("preferred", "valid"),
 
 		"address": {
 			Type:     schema.TypeString,

@@ -9,7 +9,6 @@ func ResourceInterfaceWireguardPeer() *schema.Resource {
 	resSchema := map[string]*schema.Schema{
 		MetaResourcePath: PropResourcePath("/interface/wireguard/peers"),
 		MetaId:           PropId(Id),
-		MetaSkipFields:   PropSkipFields("client_allowed_address"),
 
 		"allowed_address": {
 			Type:     schema.TypeList,

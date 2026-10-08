@@ -10,7 +10,6 @@ func ResourceDhcpClient() *schema.Resource {
 	resSchema := map[string]*schema.Schema{
 		MetaResourcePath: PropResourcePath("/ip/dhcp-client"),
 		MetaId:           PropId(Id),
-		MetaSkipFields:   PropSkipFields("name"),
 
 		"add_default_route": {
 			Type:         schema.TypeString,

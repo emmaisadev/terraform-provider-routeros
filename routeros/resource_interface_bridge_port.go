@@ -87,7 +87,7 @@ func ResourceInterfaceBridgePort() *schema.Resource {
 		MetaId:           PropId(Id),
 		MetaSkipFields: PropSkipFields("debug_info", "discard_transitions", "forward_transitions",
 			"last_topology_change", "port_number", "rx_bpdu", "rx_tc", "topology_changes", "tx_bpdu", "tx_tc",
-			"actual_path_cost", "managed", "trusted_dhcpv6", "trusted_ra"),
+			"actual_path_cost", "managed"),
 
 		"nextid": {
 			Type:     schema.TypeString,
