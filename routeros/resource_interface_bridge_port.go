@@ -419,6 +419,14 @@ func ResourceInterfaceBridgePort() *schema.Resource {
 				"This property only has effect when dhcp-snooping is set to yes.",
 			DiffSuppressFunc: AlwaysPresentNotUserProvided,
 		},
+		"trusted_dhcpv6": {
+			Type:     schema.TypeBool,
+			Optional: true,
+			Description: "When enabled, it allows to forward DHCPv6 packets towards DHCPv6 server through this port. " +
+				"This property only has effect when dhcpv6-snooping is set to yes on the bridge. " +
+				"Available in RouterOS starting from version 7.23.",
+			DiffSuppressFunc: AlwaysPresentNotUserProvided,
+		},
 		"trusted_ra": {
 			Type:             schema.TypeBool,
 			Optional:         true,

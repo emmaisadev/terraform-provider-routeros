@@ -19,7 +19,8 @@ func ResourceInterfaceBridge() *schema.Resource {
 			Optional: true,
 			Description: "Whether to add DHCP Option-82 information (Agent Remote ID and Agent Circuit ID) to DHCP " +
 				"packets. Can be used together with Option-82 capable DHCP server to assign IP addresses and implement " +
-				"policies. This property only has effect when dhcp-snooping is set to yes.",
+				"policies. This property only has effect when dhcp-snooping is set to yes. RouterOS 7.22 and earlier; " +
+				"replaced by `dhcp_agent_circuit_id` and `dhcp_agent_remote_id` in 7.23.",
 			RequiredWith: []string{"dhcp_snooping"},
 		},
 		"admin_mac": {
@@ -45,9 +46,43 @@ func ResourceInterfaceBridge() *schema.Resource {
 			DiffSuppressFunc: AlwaysPresentNotUserProvided,
 		},
 		KeyComment: PropCommentRw,
+		"dhcp_agent_circuit_id": {
+			Type:     schema.TypeString,
+			Optional: true,
+			Description: "Custom Agent Circuit ID added to DHCP Option 82. This property only has effect when " +
+				"dhcp-snooping is set to yes. Available in RouterOS starting from version 7.23.",
+			DiffSuppressFunc: AlwaysPresentNotUserProvided,
+		},
+		"dhcp_agent_remote_id": {
+			Type:     schema.TypeString,
+			Optional: true,
+			Description: "Custom Agent Remote ID added to DHCP Option 82. This property only has effect when " +
+				"dhcp-snooping is set to yes. Available in RouterOS starting from version 7.23.",
+			DiffSuppressFunc: AlwaysPresentNotUserProvided,
+		},
 		"dhcp_snooping": {
 			Type:     schema.TypeBool,
 			Optional: true,
+		},
+		"dhcpv6_agent_circuit_id": {
+			Type:     schema.TypeString,
+			Optional: true,
+			Description: "Custom Interface-ID added to DHCPv6 Option 18. This property only has effect when " +
+				"dhcpv6-snooping is set to yes. Available in RouterOS starting from version 7.23.",
+			DiffSuppressFunc: AlwaysPresentNotUserProvided,
+		},
+		"dhcpv6_agent_remote_id": {
+			Type:     schema.TypeString,
+			Optional: true,
+			Description: "Custom Remote-ID added to DHCPv6 Option 37. This property only has effect when " +
+				"dhcpv6-snooping is set to yes. Available in RouterOS starting from version 7.23.",
+			DiffSuppressFunc: AlwaysPresentNotUserProvided,
+		},
+		"dhcpv6_snooping": {
+			Type:             schema.TypeBool,
+			Optional:         true,
+			Description:      "Enables DHCPv6 snooping on the bridge. Available in RouterOS starting from version 7.23.",
+			DiffSuppressFunc: AlwaysPresentNotUserProvided,
 		},
 		KeyDisabled: PropDisabledRw,
 		KeyDynamic:  PropDynamicRo,
@@ -274,6 +309,13 @@ func ResourceInterfaceBridge() *schema.Resource {
 				"querier. This property only has effect when igmp-snooping and multicast-querier is set to yes.",
 			DiffSuppressFunc: TimeEqual,
 			RequiredWith:     []string{"igmp_snooping", "multicast_querier"},
+		},
+		"querier_uses_bridge_address": {
+			Type:     schema.TypeBool,
+			Optional: true,
+			Description: "Use the bridge IP address as the source address of IGMP querier packets. " +
+				"Available in RouterOS starting from version 7.24.",
+			DiffSuppressFunc: AlwaysPresentNotUserProvided,
 		},
 		"query_interval": {
 			Type:     schema.TypeString,

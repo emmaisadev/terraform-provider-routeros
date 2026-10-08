@@ -168,15 +168,17 @@ func ResourceRoutingOspfInterfaceTemplate() *schema.Resource {
 				[]string{"broadcast", "nbma", "ptp", "ptmp", "ptp-unnumbered", "virtual-link"}, true),
 		},
 		"vlink_neighbor_id": {
-			Type:        schema.TypeString,
-			Optional:    true,
-			Description: "Specifies the router-id of the neighbor which should be connected over the virtual link.",
+			Type:     schema.TypeString,
+			Optional: true,
+			Description: "Specifies the router-id of the neighbor which should be connected over the virtual link. " +
+				"RouterOS 7.22 and earlier; virtual links are configured on the OSPF interface from 7.23.",
 		},
 		"vlink_transit_area": {
 			Type:     schema.TypeString,
 			Optional: true,
 			Description: "A non-backbone area the two routers have in common over which the virtual link will " +
-				"be established.",
+				"be established. RouterOS 7.22 and earlier; virtual links are configured on the OSPF " +
+				"interface from 7.23.",
 		},
 		"use_bfd": {
 			Type:             schema.TypeBool,

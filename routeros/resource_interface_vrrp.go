@@ -187,6 +187,13 @@ func ResourceInterfaceVrrp() *schema.Resource {
 			ValidateFunc:     validation.StringInSlice([]string{"ipv4", "ipv6"}, false),
 			DiffSuppressFunc: AlwaysPresentNotUserProvided,
 		},
+		"v3_checksum_as_v2": {
+			Type:     schema.TypeBool,
+			Optional: true,
+			Description: "Calculate the VRRPv3 checksum the same way as VRRPv2, for interoperability with devices " +
+				"that do so. Available in RouterOS starting from version 7.24.",
+			DiffSuppressFunc: AlwaysPresentNotUserProvided,
+		},
 		"version": {
 			Type:             schema.TypeInt,
 			Optional:         true,

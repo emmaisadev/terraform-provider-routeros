@@ -38,6 +38,9 @@
     - tf: always-allow-password-login
       mt: password-authentication
 7.24:
+  /interface/dot1x/server:
+    - tf: reauth_timeout
+      mt: reauth-period
   /ip/service:
     - tf: address
       mt: available-from
