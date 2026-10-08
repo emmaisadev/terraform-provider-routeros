@@ -30,7 +30,7 @@ func ResourceSystemLoggingAction() *schema.Resource {
 	resSchema := map[string]*schema.Schema{
 		MetaResourcePath: PropResourcePath("/system/logging/action"),
 		MetaId:           PropId(Id),
-		MetaSkipFields:   PropSkipFields("add_topics_string", "managed"),
+		MetaSkipFields:   PropSkipFields("add_topics_string", "managed", "script"),
 
 		"bsd_syslog": {
 			Type:        schema.TypeBool,
