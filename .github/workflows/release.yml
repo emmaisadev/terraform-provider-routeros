@@ -17,6 +17,11 @@ on:
     tags-ignore:
       - '**'
 
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
 jobs:
 
   release:
@@ -30,7 +35,7 @@ jobs:
         with:
           fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          token: ${{ secrets.ROUTEROS_ACTIONS }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Import GPG key
         id: import_gpg
@@ -53,7 +58,7 @@ jobs:
             "@semantic-release/release-notes-generator@10.0.3"
             "conventional-changelog-conventionalcommits@8.0.0"
         env:
-          GITHUB_TOKEN: ${{ secrets.ROUTEROS_ACTIONS }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
 
       - name: Set up Go
@@ -71,4 +76,4 @@ jobs:
         env:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           # GitHub sets this automatically
-          GITHUB_TOKEN: ${{ secrets.ROUTEROS_ACTIONS }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
