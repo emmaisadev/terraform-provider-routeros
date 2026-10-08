@@ -29,7 +29,7 @@ resource "routeros_interface_bridge" "mlag_bridge" {
 
 ### Optional
 
-- `add_dhcp_option82` (Boolean) Whether to add DHCP Option-82 information (Agent Remote ID and Agent Circuit ID) to DHCP packets. Can be used together with Option-82 capable DHCP server to assign IP addresses and implement policies. This property only has effect when dhcp-snooping is set to yes.
+- `add_dhcp_option82` (Boolean) Whether to add DHCP Option-82 information (Agent Remote ID and Agent Circuit ID) to DHCP packets. Can be used together with Option-82 capable DHCP server to assign IP addresses and implement policies. This property only has effect when dhcp-snooping is set to yes. RouterOS 7.22 and earlier; replaced by `dhcp_agent_circuit_id` and `dhcp_agent_remote_id` in 7.23.
 - `admin_mac` (String) Static MAC address of the bridge. This property only has effect when auto-mac is set to no.
 - `ageing_time` (String) How long a host's information will be kept in the bridge database.
 - `arp` (String) Address Resolution Protocol mode:
@@ -41,7 +41,12 @@ resource "routeros_interface_bridge" "mlag_bridge" {
 - `arp_timeout` (String) ARP timeout is time how long ARP record is kept in ARP table after no packets are received from IP. Value auto equals to the value of arp-timeout in IP/Settings, default is 30s. Can use postfix `ms`, `s`, `m`, `h`, `d` for milliseconds, seconds, minutes, hours or days. If no postfix is set then seconds (s) is used.
 - `auto_mac` (Boolean) Automatically select one MAC address of bridge ports as a bridge MAC address, bridge MAC will be chosen from the first added bridge port. After a device reboot, the bridge MAC can change depending on the port-number.
 - `comment` (String)
+- `dhcp_agent_circuit_id` (String) Custom Agent Circuit ID added to DHCP Option 82. This property only has effect when dhcp-snooping is set to yes. Available in RouterOS starting from version 7.23.
+- `dhcp_agent_remote_id` (String) Custom Agent Remote ID added to DHCP Option 82. This property only has effect when dhcp-snooping is set to yes. Available in RouterOS starting from version 7.23.
 - `dhcp_snooping` (Boolean)
+- `dhcpv6_agent_circuit_id` (String) Custom Interface-ID added to DHCPv6 Option 18. This property only has effect when dhcpv6-snooping is set to yes. Available in RouterOS starting from version 7.23.
+- `dhcpv6_agent_remote_id` (String) Custom Remote-ID added to DHCPv6 Option 37. This property only has effect when dhcpv6-snooping is set to yes. Available in RouterOS starting from version 7.23.
+- `dhcpv6_snooping` (Boolean) Enables DHCPv6 snooping on the bridge. Available in RouterOS starting from version 7.23.
 - `disabled` (Boolean)
 - `ether_type` (String) This property only has effect when vlan-filtering is set to yes.
 - `fast_forward` (Boolean)
@@ -70,6 +75,7 @@ resource "routeros_interface_bridge" "mlag_bridge" {
 - `protocol_mode` (String) Select Spanning tree protocol (STP) or Rapid spanning tree protocol (RSTP) to ensure a loop-free topology for any bridged LAN.
 - `pvid` (Number) Port VLAN ID (pvid) specifies which VLAN the untagged ingress traffic is assigned to. It applies e.g. to frames sent from bridge IP and destined to a bridge port. This property only has effect when vlan-filtering is set to yes.
 - `querier_interval` (String) Used to change the interval how often a bridge checks if it is the active multicast querier. This property only has effect when igmp-snooping and multicast-querier is set to yes.
+- `querier_uses_bridge_address` (Boolean) Use the bridge IP address as the source address of IGMP querier packets. Available in RouterOS starting from version 7.24.
 - `query_interval` (String) Used to change the interval how often IGMP general membership queries are sent out. This property only has effect when igmp-snooping and multicast-querier is set to yes.
 - `query_response_interval` (String) Interval in which a IGMP capable device must reply to a IGMP query with a IGMP membership report. This property only has effect when igmp-snooping and multicast-querier is set to yes.
 - `ra_guard` (Boolean) Whether to enable IPv6 Router Advertisement guard on the bridge. Available in RouterOS starting from version 7.22.

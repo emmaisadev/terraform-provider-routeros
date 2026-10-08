@@ -1,3 +1,13 @@
+## [1.101.0](https://github.com/emmaisadev/terraform-provider-routeros/compare/v1.100.0...v1.101.0) (2026-10-08)
+
+### Features
+
+* **schema:** support RouterOS 7.23 and 7.24 fields ([fe3a0dd](https://github.com/emmaisadev/terraform-provider-routeros/commit/fe3a0ddddc7ec2d983d43427612f3d3a69a6a339))
+
+### Bug Fixes
+
+* **schema:** stop skip lists shadowing modelled fields ([6e70f4f](https://github.com/emmaisadev/terraform-provider-routeros/commit/6e70f4f77803cbccb6797f9b0e64e35568f262da)), closes [#1009](https://github.com/emmaisadev/terraform-provider-routeros/issues/1009) [#987](https://github.com/emmaisadev/terraform-provider-routeros/issues/987) [#992](https://github.com/emmaisadev/terraform-provider-routeros/issues/992)
+
 ## [1.100.0](https://github.com/emmaisadev/terraform-provider-routeros/compare/v1.99.1...v1.100.0) (2026-10-08)
 
 ### Features
