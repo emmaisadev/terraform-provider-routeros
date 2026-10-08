@@ -22,6 +22,12 @@ jobs:
           - "7.15"
           - "7.16"
           - "7.22"
+        include:
+          # Not published as vaerhme/routeros; built by the "RouterOS test image" workflow.
+          - experimental: false
+            os: ubuntu-latest
+            routeros_version: "7.24.5"
+            image: ghcr.io/emmaisadev/routeros:v7.24.5
 
     steps:
       - name: Container check
@@ -83,7 +89,7 @@ jobs:
 
     services:
       routeros:
-        image: vaerhme/routeros:v${{ matrix.routeros_version }}
+        image: ${{ matrix.image || format('vaerhme/routeros:v{0}', matrix.routeros_version) }}
         ports:
           - 443:443
           - 8728:8728
